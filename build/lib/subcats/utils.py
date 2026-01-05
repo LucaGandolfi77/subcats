@@ -1,11 +1,6 @@
 def format_timestamp(seconds: float) -> str:
-    """Convert seconds to SRT timestamp format: HH:MM:SS,mmm.
-
-    Args:
-        seconds (float): Time in seconds.
-
-    Returns:
-        str: Formatted timestamp suitable for SRT files.
+    """
+    Converte i secondi in formato timestamp SRT: HH:MM:SS,mmm
     """
     hours = int(seconds // 3600)
     minutes = int((seconds % 3600) // 60)
@@ -13,20 +8,16 @@ def format_timestamp(seconds: float) -> str:
     milliseconds = int((seconds - int(seconds)) * 1000)
     return f"{hours:02d}:{minutes:02d}:{secs:02d},{milliseconds:03d}"
 
-
 def write_srt(segments, file_path):
-    """Write a list of segments to an SRT file.
-
-    Args:
-        segments (list): List of dicts with keys `start`, `end`, `text`.
-        file_path (str): Output SRT file path.
+    """
+    Scrive una lista di segmenti in un file SRT.
     """
     with open(file_path, "w", encoding="utf-8") as f:
         for i, segment in enumerate(segments, start=1):
             start = format_timestamp(segment['start'])
             end = format_timestamp(segment['end'])
             text = segment['text'].strip()
-
+            
             f.write(f"{i}\n")
             f.write(f"{start} --> {end}\n")
             f.write(f"{text}\n\n")

@@ -1,3 +1,123 @@
+
+# SubCats 🐱🎤
+
+SubCats is a Python library for generating multilingual subtitles from audio files. It leverages state-of-the-art models for accurate transcription and translation.
+
+## Features
+
+- Automatic speech recognition (ASR) via OpenAI Whisper.
+- Support for common audio formats (MP3, WAV, OGG, M4A) via ffmpeg.
+- Translation using `deep-translator` (e.g. Google Translate, DeepL).
+- Generates `.srt` subtitle files and a detailed translation log.
+
+## Prerequisites
+
+ffmpeg must be installed on the host system.
+
+On Ubuntu/Debian:
+
+```bash
+sudo apt update && sudo apt install ffmpeg
+```
+
+## Installation
+
+Install the project dependencies and the package itself:
+
+```bash
+pip install -r requirements.txt
+pip install .
+```
+
+## Usage
+
+Quick example:
+
+```python
+from subcats import SubCats
+
+subcats = SubCats(model_size="base")
+subcats.generate_subtitles(
+    audio_path="your_audio.mp3",
+    target_languages=["it", "en", "fr"],
+    output_dir="./output"
+)
+```
+
+## Build scripts (optional)
+
+Two helper scripts are provided to automate creation of a Windows standalone executable using PyInstaller:
+
+- `build_windows.ps1` — PowerShell script for Windows.
+- `build_windows.sh` — Bash script for Unix/WSL environments.
+
+Example (Bash/WSL):
+
+```bash
+./build_windows.sh
+# output: dist/SubCatsCLI.exe
+```
+
+## Detailed build instructions (Linux / WSL)
+
+These steps replicate the procedure used to build `dist/SubCatsCLI.exe` in a Linux/WSL environment.
+
+1. Install system packages:
+
+```bash
+sudo apt update
+sudo apt install -y python3-dev python3.12-venv build-essential pkg-config libssl-dev ffmpeg
+```
+
+2. Create and activate a virtual environment using the system Python (ensures a shared libpython is available):
+
+```bash
+/usr/bin/python3 -m venv .venv
+. .venv/bin/activate
+pip install --upgrade pip setuptools wheel
+```
+
+3. To avoid bundling large CUDA artifacts (and reduce disk usage), install the CPU-only PyTorch wheel:
+
+```bash
+pip install --index-url https://download.pytorch.org/whl/cpu torch
+```
+
+4. Install project dependencies and the package itself:
+
+```bash
+pip install -r requirements.txt
+pip install .
+```
+
+5. Clean previous build outputs to free space if needed:
+
+```bash
+rm -rf build dist
+pip cache purge
+```
+
+6. Run the build script which generates the PyInstaller spec and runs PyInstaller:
+
+```bash
+./build_windows.sh
+# result: dist/SubCatsCLI.exe
+```
+
+Notes:
+
+- If PyInstaller reports "Python was built without a shared library", recreate the venv using `/usr/bin/python3` or install `python3-dev`, or rebuild Python with `--enable-shared`.
+- If disk space is constrained, prefer the CPU-only `torch` wheel or remove CUDA packages before building.
+- The produced executable can be large (hundreds of MB to several GB) depending on included dependencies.
+
+## Output structure
+
+The library will produce the following files in the output folder:
+
+1. `filename.it.srt` — Italian subtitles
+2. `filename.en.srt` — English subtitles
+3. `filename.fr.srt` — French subtitles
+4. `filename_translation_log.txt` — Detailed translation log with timestamps
 # SubCats 🐱🎤
 
 **SubCats** è una libreria Python per la generazione automatica di sottotitoli multilingua a partire da file audio. Utilizza tecnologie allo stato dell'arte (SOTA) per garantire alta precisione.

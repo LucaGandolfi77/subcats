@@ -1,2 +1,10 @@
 # Ignora la directory dell'ambiente virtuale
 /.venv/
+
+# Build artifacts
+build/
+dist/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+*.pyc

@@ -1,0 +1,12 @@
+README.md
+setup.py
+SubCats.egg-info/PKG-INFO
+SubCats.egg-info/SOURCES.txt
+SubCats.egg-info/dependency_links.txt
+SubCats.egg-info/entry_points.txt
+SubCats.egg-info/requires.txt
+SubCats.egg-info/top_level.txt
+subcats/__init__.py
+subcats/cli.py
+subcats/core.py
+subcats/utils.py
