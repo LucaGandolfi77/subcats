@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "types": ["node"],
+    "paths": {
+      "@courseweaver/domain": ["packages/domain/src/index.ts"],
+      "@courseweaver/engine": ["packages/engine/src/index.ts"],
+      "@courseweaver/persistence": ["packages/persistence/src/index.ts"],
+      "@courseweaver/runtime": ["packages/runtime/src/index.ts"],
+      "@courseweaver/exporter": ["packages/exporter/src/index.ts"],
+      "@courseweaver/assets": ["packages/asset-pipeline/src/index.ts"],
+      "@courseweaver/ai": ["packages/ai/src/index.ts"]
+    }
+  }
+}

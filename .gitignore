@@ -8,3 +8,8 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 *.pyc
+
+# Storyline workspace artifacts
+storyline/node_modules/
+storyline/dist/
+storyline/apps/*/dist/

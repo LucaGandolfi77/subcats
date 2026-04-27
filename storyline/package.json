@@ -1,0 +1,41 @@
+{
+  "name": "courseweaver-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:authoring": "npm run dev --workspace @courseweaver/authoring",
+    "dev:player": "npm run dev --workspace @courseweaver/player",
+    "build:authoring": "npm run build --workspace @courseweaver/authoring",
+    "build:player": "npm run build --workspace @courseweaver/player",
+    "build": "npm run build:player && npm run build:authoring",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "export:demo": "npm run build:player && tsx packages/exporter/src/cli.ts --demo --output dist/demo-web",
+    "export:demo:scorm": "npm run build:player && tsx packages/exporter/src/cli.ts --demo --target scorm --output dist/demo-scorm",
+    "validate": "npm run test && npm run build && npm run export:demo"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^3.23.8",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^25.0.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^2.1.4"
+  }
+}

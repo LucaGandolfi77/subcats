@@ -1,0 +1,476 @@
+{
+  "version": "1.0.0",
+  "id": "project-customer-care-foundations",
+  "title": "Customer Care Foundations",
+  "description": "Interactive course project",
+  "courseMetadata": {
+    "slug": "customer-care-foundations",
+    "language": "en",
+    "provider": "CourseWeaver Studio Demo",
+    "subject": "Customer support communication",
+    "durationMinutes": 12,
+    "keywords": [
+      "customer service",
+      "handoff",
+      "communication"
+    ]
+  },
+  "createdAt": "2026-04-27T09:31:03.445Z",
+  "updatedAt": "2026-04-27T09:31:03.445Z",
+  "scenes": [
+    {
+      "id": "scene-core-flow",
+      "title": "Core Flow",
+      "slideIds": [
+        "slide-welcome",
+        "slide-quiz",
+        "slide-results"
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "id": "slide-welcome",
+      "sceneId": "scene-core-flow",
+      "title": "Welcome",
+      "notes": "Introduce the module and its learning goals.",
+      "background": "",
+      "layers": [
+        {
+          "id": "layer-welcome-base",
+          "name": "Base Layer",
+          "visibleByDefault": true,
+          "locked": false,
+          "objectIds": [
+            "object-heading",
+            "object-body",
+            "object-hero-image",
+            "object-show-goals",
+            "object-tabs"
+          ]
+        },
+        {
+          "id": "layer-goal-detail",
+          "name": "Goal Detail",
+          "visibleByDefault": false,
+          "locked": false,
+          "objectIds": [
+            "object-goal-detail"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": "object-heading",
+          "name": "Heading",
+          "kind": "text",
+          "layerId": "layer-welcome-base",
+          "position": {
+            "x": 72,
+            "y": 56,
+            "width": 560,
+            "height": 88,
+            "rotation": 0
+          },
+          "visible": true,
+          "text": "Build confident customer conversations",
+          "style": {
+            "textColor": "#18211f",
+            "fontSize": 42,
+            "fontWeight": 700,
+            "padding": 8
+          },
+          "states": [],
+          "triggers": []
+        },
+        {
+          "id": "object-body",
+          "name": "Body Copy",
+          "kind": "text",
+          "layerId": "layer-welcome-base",
+          "position": {
+            "x": 72,
+            "y": 164,
+            "width": 500,
+            "height": 132,
+            "rotation": 0
+          },
+          "visible": true,
+          "text": "This sample project demonstrates layers, states, triggers, variables, media, quiz scoring, and web export.",
+          "style": {
+            "textColor": "#18211f",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "padding": 8
+          },
+          "states": [],
+          "triggers": []
+        },
+        {
+          "id": "object-hero-image",
+          "name": "Support Illustration",
+          "kind": "image",
+          "layerId": "layer-welcome-base",
+          "position": {
+            "x": 704,
+            "y": 88,
+            "width": 360,
+            "height": 220,
+            "rotation": 0
+          },
+          "visible": true,
+          "assetId": "asset-hero-image",
+          "style": {
+            "backgroundImageFit": "cover",
+            "borderRadius": 24
+          },
+          "states": [],
+          "triggers": []
+        },
+        {
+          "id": "object-show-goals",
+          "name": "Show Goals Button",
+          "kind": "button",
+          "layerId": "layer-welcome-base",
+          "position": {
+            "x": 72,
+            "y": 334,
+            "width": 240,
+            "height": 56,
+            "rotation": 0
+          },
+          "visible": true,
+          "text": "Show learning goals",
+          "style": {
+            "fill": "#0b7a75",
+            "textColor": "#f7fbfa",
+            "fontSize": 18,
+            "fontWeight": 600,
+            "borderRadius": 999,
+            "padding": 12
+          },
+          "defaultStateId": "state-goals-reviewed",
+          "states": [
+            {
+              "id": "state-goals-reviewed",
+              "name": "Visited",
+              "style": {
+                "fill": "#c5601a",
+                "textColor": "#fff4ea"
+              },
+              "text": "Goals reviewed",
+              "visibility": true
+            }
+          ],
+          "triggers": [
+            {
+              "id": "trigger-reveal-goals",
+              "name": "Reveal goal layer",
+              "event": "onClick",
+              "order": 1,
+              "sourceObjectId": "object-show-goals",
+              "conditions": [],
+              "actions": [
+                {
+                  "id": "action-show-layer",
+                  "type": "showLayer",
+                  "targetId": "layer-goal-detail"
+                },
+                {
+                  "id": "action-change-state",
+                  "type": "changeState",
+                  "targetId": "object-show-goals",
+                  "stateId": "state-goals-reviewed"
+                },
+                {
+                  "id": "action-set-variable",
+                  "type": "setVariable",
+                  "variableId": "var-go-to-quiz",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "object-tabs",
+          "name": "Practice Tabs",
+          "kind": "tabs",
+          "layerId": "layer-welcome-base",
+          "position": {
+            "x": 72,
+            "y": 430,
+            "width": 520,
+            "height": 180,
+            "rotation": 0
+          },
+          "visible": true,
+          "style": {
+            "fill": "#ffffff",
+            "textColor": "#18211f",
+            "borderRadius": 20
+          },
+          "states": [],
+          "triggers": [],
+          "interaction": {
+            "tabs": {
+              "tabs": [
+                {
+                  "id": "tab-overview",
+                  "title": "Overview",
+                  "body": "Expose the goals, then direct the learner into the knowledge check."
+                },
+                {
+                  "id": "tab-practice",
+                  "title": "Practice",
+                  "body": "Use variables and object states to gate the next step in the scenario."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "object-goal-detail",
+          "name": "Goal Detail",
+          "kind": "text",
+          "layerId": "layer-goal-detail",
+          "position": {
+            "x": 644,
+            "y": 332,
+            "width": 380,
+            "height": 152,
+            "rotation": 0
+          },
+          "visible": true,
+          "text": "Goal detail: listen, clarify, confirm, and close with a clear owner and next step.",
+          "style": {
+            "fill": "#10211c",
+            "textColor": "#f7fbfa",
+            "fontSize": 20,
+            "borderRadius": 18,
+            "padding": 18
+          },
+          "states": [],
+          "triggers": []
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "slide-quiz",
+      "sceneId": "scene-core-flow",
+      "title": "Knowledge Check",
+      "notes": "",
+      "background": "",
+      "layers": [
+        {
+          "id": "layer-quiz-base",
+          "name": "Base Layer",
+          "visibleByDefault": true,
+          "locked": false,
+          "objectIds": [
+            "object-quiz",
+            "object-results-button"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": "object-quiz",
+          "name": "Knowledge Check",
+          "kind": "quiz",
+          "layerId": "layer-quiz-base",
+          "position": {
+            "x": 72,
+            "y": 108,
+            "width": 620,
+            "height": 360,
+            "rotation": 0
+          },
+          "visible": true,
+          "style": {
+            "fill": "#ffffff",
+            "textColor": "#18211f",
+            "borderRadius": 20,
+            "padding": 18
+          },
+          "states": [],
+          "triggers": [],
+          "interaction": {
+            "quiz": {
+              "id": "quiz-customer-handoff",
+              "prompt": "Which behavior creates the strongest customer handoff?",
+              "type": "multipleChoice",
+              "options": [
+                {
+                  "id": "quiz-option-a",
+                  "label": "Close the conversation without a summary"
+                },
+                {
+                  "id": "quiz-option-b",
+                  "label": "Confirm the next step and owner"
+                },
+                {
+                  "id": "quiz-option-c",
+                  "label": "Wait for the customer to ask again later"
+                }
+              ],
+              "correctOptionIds": [
+                "quiz-option-b"
+              ],
+              "points": 15,
+              "feedbackCorrect": "Correct. Ownership and a next step reduce friction.",
+              "feedbackIncorrect": "Not quite. The strongest handoff confirms what happens next."
+            }
+          }
+        },
+        {
+          "id": "object-results-button",
+          "name": "View Results",
+          "kind": "button",
+          "layerId": "layer-quiz-base",
+          "position": {
+            "x": 72,
+            "y": 540,
+            "width": 220,
+            "height": 56,
+            "rotation": 0
+          },
+          "visible": true,
+          "text": "View results",
+          "style": {
+            "fill": "#0b7a75",
+            "textColor": "#f7fbfa",
+            "fontSize": 18,
+            "fontWeight": 600,
+            "borderRadius": 999,
+            "padding": 12
+          },
+          "states": [],
+          "triggers": [
+            {
+              "id": "trigger-results-navigation",
+              "name": "Jump to results when goals were reviewed",
+              "event": "onClick",
+              "order": 1,
+              "sourceObjectId": "object-results-button",
+              "conditions": [
+                {
+                  "id": "condition-goals-reviewed",
+                  "variableId": "var-go-to-quiz",
+                  "operator": "isTrue"
+                }
+              ],
+              "actions": [
+                {
+                  "id": "action-jump-to-results",
+                  "type": "jumpToSlide",
+                  "targetId": "slide-results"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "slide-results",
+      "sceneId": "scene-core-flow",
+      "title": "Results",
+      "notes": "",
+      "background": "",
+      "layers": [
+        {
+          "id": "layer-results-base",
+          "name": "Base Layer",
+          "visibleByDefault": true,
+          "locked": false,
+          "objectIds": [
+            "object-results-heading"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": "object-results-heading",
+          "name": "Results Heading",
+          "kind": "text",
+          "layerId": "layer-results-base",
+          "position": {
+            "x": 72,
+            "y": 108,
+            "width": 520,
+            "height": 84,
+            "rotation": 0
+          },
+          "visible": true,
+          "text": "You completed the demo flow.",
+          "style": {
+            "textColor": "#18211f",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "padding": 8
+          },
+          "states": [],
+          "triggers": []
+        }
+      ],
+      "triggers": []
+    }
+  ],
+  "variables": [
+    {
+      "id": "var-go-to-quiz",
+      "name": "go_to_quiz",
+      "kind": "boolean",
+      "defaultValue": false
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset-hero-image",
+      "name": "Support Desk Illustration",
+      "kind": "image",
+      "source": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220'%3E%3Crect width='400' height='220' fill='%23d8ebe8'/%3E%3Ccircle cx='92' cy='110' r='44' fill='%230b7a75'/%3E%3Crect x='160' y='70' width='170' height='24' rx='12' fill='%2318211f'/%3E%3Crect x='160' y='112' width='120' height='18' rx='9' fill='%23c5601a'/%3E%3Crect x='160' y='144' width='150' height='18' rx='9' fill='%2310211c'/%3E%3C/svg%3E",
+      "mimeType": "image/svg+xml"
+    }
+  ],
+  "theme": {
+    "fonts": {
+      "heading": "IBM Plex Sans",
+      "body": "IBM Plex Sans"
+    },
+    "colors": {
+      "canvas": "#f3efe3",
+      "accent": "#0b7a75",
+      "accentMuted": "#d8ebe8",
+      "panel": "#10211c",
+      "text": "#18211f"
+    }
+  },
+  "playerSettings": {
+    "width": 1280,
+    "height": 720,
+    "responsiveMode": "contain",
+    "allowCaptions": true,
+    "showTranscriptPanel": false,
+    "startSceneId": "scene-core-flow",
+    "startSlideId": "slide-welcome"
+  },
+  "publishing": {
+    "scorm": {
+      "version": "1.2",
+      "packageIdentifier": "cw.customer_care_foundations",
+      "organizationTitle": "Customer Care Foundations",
+      "itemTitle": "Customer Care Foundations",
+      "masteryScore": 85,
+      "maxTimeAllowed": "0001:00:00",
+      "timeLimitAction": "continue,no message",
+      "credit": "credit",
+      "lessonMode": "normal",
+      "dataFromLms": "cohort=demo"
+    }
+  },
+  "exportJobs": []
+}

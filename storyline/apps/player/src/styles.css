@@ -1,0 +1,67 @@
+:root {
+  color: #18211f;
+  background:
+    radial-gradient(circle at top, rgba(11, 122, 117, 0.18), transparent 24%),
+    linear-gradient(180deg, #f2ede2 0%, #eef6f3 100%);
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.player-app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  display: grid;
+  gap: 24px;
+}
+
+.player-app__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+}
+
+.player-app__header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.player-app__header p {
+  margin: 4px 0 0;
+  color: #4f605c;
+}
+
+.player-app__eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+}
+
+.player-app__upload {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(16, 33, 28, 0.08);
+}
+
+.player-app__surface {
+  min-height: 720px;
+}
+
+@media (max-width: 900px) {
+  .player-app__header {
+    display: grid;
+    align-items: start;
+  }
+}
